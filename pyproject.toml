@@ -1,0 +1,23 @@
+[project]
+name = "betago"
+version = "0.1.0"
+description = "a simple go game"
+authors = [{ name = "salvor", email = "yinmingzhuo@gmail.com" }]
+dependencies = ["pyside6~=6.5.0"]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = { text = "MIT" }
+
+[project.urls]
+homepage = "https://github.com/silver-ymz/betago"
+source = "https://github.com/silver-ymz/betago"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+
+[tool.rye.workspace]
+members = ["*"]
