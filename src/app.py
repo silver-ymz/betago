@@ -55,11 +55,51 @@ class BoardWidget(QtWidgets.QWidget):
         self.update_board()
 
 
+class MainWindow(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.word_da = load_word('settings/1.txt')
+        self.word_jiao = load_word('settings/2.txt')
+
+        self.board = BoardWidget()
+        self.button_da = QtWidgets.QPushButton('大')
+        self.button_jiao = QtWidgets.QPushButton('交')
+        self.button_clear = QtWidgets.QPushButton('清空')
+
+        self.button_da.clicked.connect(self.da_clicked)
+        self.button_jiao.clicked.connect(self.jiao_clicked)
+        self.button_clear.clicked.connect(self.clear_clicked)
+
+        layout_button = QtWidgets.QVBoxLayout()
+        layout_button.addWidget(self.button_jiao)
+        layout_button.addWidget(self.button_da)
+        layout_button.addWidget(self.button_clear)
+        layout = QtWidgets.QHBoxLayout()
+        layout.addWidget(self.board)
+        layout.addLayout(layout_button)
+        self.setLayout(layout)
+
+    @QtCore.Slot()
+    def da_clicked(self):
+        self.board.board = self.word_da
+        self.board.update_board()
+
+    @QtCore.Slot()
+    def jiao_clicked(self):
+        self.board.board = self.word_jiao
+        self.board.update_board()
+
+    @QtCore.Slot()
+    def clear_clicked(self):
+        self.board.board = [[0 for _ in range(16)] for _ in range(16)]
+        self.board.update_board()
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
-    word = load_word('settings/1.txt')
 
-    widget = BoardWidget(word)
+    widget = MainWindow()
     widget.resize(1000, 1000)
     widget.show()
 
