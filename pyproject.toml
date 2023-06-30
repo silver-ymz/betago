@@ -2,8 +2,8 @@
 name = "betago"
 version = "0.1.0"
 description = "a simple go game"
-authors = [{ name = "salvor", email = "yinmingzhuo@gmail.com" }]
-dependencies = ["pyside6~=6.5.0"]
+authors = [{ name = "silver-ymz", email = "yinmingzhuo@gmail.com" }]
+dependencies = ["pyside6~=6.5.0", "networkx~=3.1.0"]
 readme = "README.md"
 requires-python = ">= 3.10"
 license = { text = "MIT" }
